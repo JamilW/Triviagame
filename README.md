@@ -5,7 +5,7 @@
 * Trivia Game
 
 ### Instructions
-* You'll create a trivia form with multiple choice or true/false options (your choice).
+* Welcome to my trivia game with multiple choice or true/false options.
 
 * The player will have a limited amount of time to finish the quiz. 
 
