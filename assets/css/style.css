@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+}
+body    {
+    background: url("../images/Multicolor-Show-Page-Background.jpg");
+    
+}
+.form-check  {
+    background: black;
+    height: 100vh;
+}
+#title  {
+    text-align: center;
+    padding-top: 2vh;
+    font-family: 'Shadows Into Light', cursive;
+    font-weight: 20vw;
+    color: rgb(223, 223, 114);
+    font-size: 15vh;
+}
+#timer {
+    font-family: 'Gloria Hallelujah', cursive;
+    text-align: center;
+    font-size: 5vh;
+    color: white;
+}
