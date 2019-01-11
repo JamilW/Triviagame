@@ -1,76 +1,44 @@
-var timeLeft = 30;
+var timeLeft = 60;
 var elem = document.getElementById("timer");
 var timerId = setInterval(countdown, 1000);
+var $questionContent = $("<div></div>");
 var questions = [
     {question: "Which rap group is not a member of the Native Tongues?",
-     answers: {
-        a: "A Tribe Called Quest",
-        b: "Wu-Tang Clan",
-        c: "De La Soul",
-        d: "Jungle Brothers"
-     },
-     answer: "b"
+     choices: ["A Tribe Called Quest", "Wu-Tang Clan", "De La Soul", "Jungle Brothers"],
+     answer: 1
     },
     {question: "First Rap Album to Go Platinum?",
-     answers: {
-        a: "License to Ill",
-        b: "Straight Outta Compton",
-        c: "Radio",
-        d: "Raising Hell"
-     },
-     answer: "d"
+     choices: ["License to Ill", "Straight Outta Compton", "Straight Outta Compton", "Raising Hell"],
+     answer: 3
     },
     {question: "Which rap group was the first rap artists to get a million dollar record deal?",
-     answers: {
-        a: "Eric B. & Rakim",
-        b: "Wu-Tang Clan",
-        c: "Public Enemy",
-        d: "N.W.A."
-     },
-     answer: "a"
+     choices: ["Eric B. & Rakim", "Wu-Tang Clan", "Public Enemy", "N.W.A."],
+     answer: 0
     },
     {question: "Who is the highest selling rap artist of all time?",
-     answers: {
-        a: "Jay-Z",
-        b: "2Pac",
-        c: "Eminem",
-        d: "MC Hammer"
-     },
-     answer: "c"
+     choices: ["Jay-Z", "2Pac", "Eminem", "MC Hammer"],
+     answer: 2
     },
     {question: "Is the debut of rap artist, Nas, with the album, Illmatic, considered a classic?",
-     answers: {
-        a: "True",
-        b: "False",
-     },
-     answer: "a"
+     choices: ["True", "False"],
+     answer: 0
     },
     {question: "Which album did not sell over 10 million copies?",
-     answers: {
-        a: "The Blueprint",
-        b: "The Marshall Mathers LP",
-        c: "All Eyez On Me",
-        d: "Life After Death"
-     },
-     answer: "a"
+     choices: ["The Blueprint", "The Marshall Mathers LP", "All Eyez On Me", "Life After Death"],
+     answer: 0
     },
     {question: "Who was the first rap artist(s) to win a Grammy?",
-     answers: {
-        a: "MC Hammer",
-        b: "LL Cool J",
-        c: "Run DMC",
-        d: "DJ Jazzy Jeff and the Fresh Prince"
-     },
-     answer: "d"
+     choices: ["MC Hammer", "LL Cool J", "Run DMC", "DJ Jazzy Jeff and the Fresh Prince"],
+     answer: 3
    },
     {question: "Jay-Z beat Nas in their rap battle",
-     answers: {
-        a: "True",
-        b: "False",   
-     },
-     answer: "b"
+     choices: ["True", "False"],
+     answer: 1
     },
 ]
+var correctAnswers;
+var incorrectAnswers;
+var unanswered;
 
 function startGame() {
     $(".quiz").hide();
@@ -90,5 +58,9 @@ function countdown() {
         elem.innerHTML = "Time Remaining: " + timeLeft + " seconds remaining";
         timeLeft--;
     }
+}
+
+function quiz()   {
+   form 
 }
 

@@ -3,7 +3,6 @@
 }
 body    {
     background: url("../images/Multicolor-Show-Page-Background.jpg");
-    
 }
 .col-md-8  {
     background: black;
@@ -54,3 +53,8 @@ body    {
     font-size: 3vw;
     border: solid rgb(36, 44, 119) 3px;
 }
+#question1, #question2, #question3, #question4, #question5, #question6, #question7, #question8  {
+    font-family: 'Gloria Hallelujah', cursive;
+    text-align: center;
+    color: rgb(238, 109, 109);
+} 
