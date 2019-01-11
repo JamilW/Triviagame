@@ -5,9 +5,10 @@ body    {
     background: url("../images/Multicolor-Show-Page-Background.jpg");
     
 }
-.form-check  {
+.col-md-8  {
     background: black;
     height: 100vh;
+    border: rgb(223, 223, 114) ridge 5px;
 }
 #title  {
     text-align: center;
@@ -21,5 +22,35 @@ body    {
     font-family: 'Gloria Hallelujah', cursive;
     text-align: center;
     font-size: 5vh;
-    color: white;
+    color: #4e33ec;
+}
+.quiz   {
+    display: none;
+}
+#results    {
+    display: none;
+}
+#start  {
+    width: 5vw;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 15vh;
+    justify-content: center;
+    background: rgb(223, 223, 114);
+    height: 15vh;
+    width: 20vw;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 3vw;
+    border: solid rgb(36, 44, 119) 3px;
+}
+#submit {
+    width: 20vw;
+    height: 10vh;
+    background: rgb(223, 223, 114);
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 3vw;
+    border: solid rgb(36, 44, 119) 3px;
 }
