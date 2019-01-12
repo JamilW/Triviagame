@@ -54,6 +54,8 @@ startGame();
 function countdown() {
     if (timeLeft == -1) { 
         clearTimeout(timerId);
+        $("#results").show();
+        $(".quiz").hide();
     } else {
         elem.innerHTML = "Time Remaining: " + timeLeft + " seconds remaining";
         timeLeft--;
@@ -61,6 +63,22 @@ function countdown() {
 }
 
 function quiz()   {
-   form 
+   // $("#q1").html(questions.question1);
+   // $("#q2").html(questions.question2);
+   // $("#q3").text(questions.question3).show();
+   // $("#q4").text(questions.question4).show();
+   // $("#q5").text(questions.question5).show();
+   // $("#q6").text(questions.question6).show();
+   // $("#q7").text(questions.question7).show();
+   // $("#q8").text(questions.question8).show();
+
+   for(var i=0; i < questions.length; i++) {
+
+      var el = "#q" + (i +1);
+
+      $(el).prepend("<div>" + questions[i].question + "</div>");
+
+   }
 }
+quiz();
 
