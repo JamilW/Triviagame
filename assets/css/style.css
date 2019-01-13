@@ -48,7 +48,7 @@ body    {
     border: solid rgb(36, 44, 119) 3px;
 }
 #submit {
-    width: 20vw;
+    width: 25vw;
     height: 10vh;
     background: rgb(223, 223, 114);
     display: flex;
@@ -59,6 +59,8 @@ body    {
     border: solid rgb(36, 44, 119) 3px;
     margin-bottom: 10vh;
     margin-top: 10vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
 }
 .question  {
     font-family: 'Gloria Hallelujah', cursive;
