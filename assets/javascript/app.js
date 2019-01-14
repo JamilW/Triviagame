@@ -1,10 +1,11 @@
+// Global variables
 var timeLeft = 30;
 var elem = document.getElementById("timer");
 var timerId = setInterval(countdown, 1000);
 var $questionContent = $("<div></div>");
 var questions = [
     {question: "Which rap group is not a member of the Native Tongues?",
-     choices1: ["A Tribe Called Quest", "Wu-Tang Clan", "De La Soul", "Jungle Brothers"],
+     choices1: [ "De La Soul", "Wu-Tang Clan", "A Tribe Called Quest", "Jungle Brothers"],
      answer: 1
     },
     {question: "First Rap Album to Go Platinum?",
@@ -36,11 +37,12 @@ var questions = [
      answer: 1
     },
 ]
-var currentQuestion
-var correctAnswers;
-var incorrectAnswers;
+var results;
+var correctAnswers = 0;
+var incorrectAnswers = 0;
 var unanswered;
 
+// Will show start button and hide quiz/results
 function startGame() {
     $(".quiz").hide();
     $("#results").hide();
@@ -52,6 +54,7 @@ function startGame() {
 }
 startGame();
 
+// Show results/hide quize if timer runs out
 function countdown() {
     if (timeLeft == -1) { 
         clearTimeout(timerId);
@@ -63,6 +66,7 @@ function countdown() {
     }
 }
 
+// Show results/hide quiz if submit button clicked
 function submitButton() {
    $("#submit").on("click", function() {
       $("#results").show();
@@ -71,27 +75,101 @@ function submitButton() {
 }
 submitButton();
 
+// Displaying questions
 function quiz()   {
    for(var i = 0; i < questions.length; i++) {
       var el = "#q" + (i + 1);
       $(el).prepend("<div>" + questions[i].question + "</div>"); 
+   }
+}  
+quiz();
+
+// Store correct answers
+function init()   {
+   sessionStorage.setItem("a1", 1);
+   sessionStorage.setItem("a2", 3);
+   sessionStorage.setItem("a3", 0);
+   sessionStorage.setItem("a4", 2);
+   sessionStorage.setItem("a5", 0);
+   sessionStorage.setItem("a6", 0);
+   sessionStorage.setItem("a7", 3);
+   sessionStorage.setItem("a8", 1);
+}
+
+// Records answers
+function process(q)  {
+   if (q == "q1") {
+      var submitted = $("input[name=q1]:checked").val();
+         if (submitted == sessionStorage.a1) {
+            correctAnswers++;
+      }  else  {
+            incorrectAnswers++;
       }
-      for(var j = 0; j < questions.length; j++)   {
-         console.log(questions);
-         var e1 = ".answer1" + (j + 1);
-         var e2 = ".answer2" + (j + 1);
-         var e3 = ".answer3" + (j + 1);
-         var e4 = ".answer4" + (j + 1);
-         var e_array = [e1, e2, e3, e4];
-     //    for (var i = 0; i < questions[j].choices.length; i++) {   
-            $(e_array[i]).text("<label>" + "<input>" + "A: " + questions.indexOf("A Tribe Called Quest") + "</label>" + "<br>");
-      //      $(e_array[i]).html(questions[j].choices);
-  //          console.log(questions[j].choices[k]);
-         }
-         }
-         
-      
-      quiz();
+   }
 
-     
+   if (q == "q2") {
+      var submitted = $("input[name=q2]:checked").val();
+         if (submitted == sessionStorage.a2) {
+            correctAnswers++;
+      }  else  {
+            incorrectAnswers++;
+      }
+   }
 
+   if (q == "q3") {
+      var submitted = $("input[name=q3]:checked").val();
+         if (submitted == sessionStorage.a3) {
+            correctAnswers++;
+      }  else  {
+            incorrectAnswers++;
+      }
+   }
+
+   if (q == "q4") {
+      var submitted = $("input[name=q4]:checked").val();
+         if (submitted == sessionStorage.a4) {
+            correctAnswers++;
+      }  else  {
+            incorrectAnswers++;
+      }
+   }
+
+   if (q == "q5") {
+      var submitted = $("input[name=q5]:checked").val();
+         if (submitted == sessionStorage.a5) {
+            correctAnswers++;
+      }  else  {
+            incorrectAnswers++;
+      }
+   }
+
+   if (q == "q6") {
+      var submitted = $("input[name=q6]:checked").val();
+         if (submitted == sessionStorage.a6) {
+            correctAnswers++;
+      }  else  {
+            incorrectAnswers++;
+      }
+   }
+
+   if (q == "q7") {
+      var submitted = $("input[name=q7]:checked").val();
+         if (submitted == sessionStorage.a7) {
+            correctAnswers++;
+      }  else  {
+            incorrectAnswers++;
+      }
+   }
+
+   if (q == "q8") {
+      var submitted = $("input[name=q8]:checked").val();
+         if (submitted == sessionStorage.a8) {
+            correctAnswers++;
+      }  else  {
+            incorrectAnswers++;
+      }
+      $("#correct").html("<p>" + correctAnswers + "</p>")
+      $("#incorrect").html("<p>" + incorrectAnswers + "</p>")
+   }
+   return false;
+}
