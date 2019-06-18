@@ -1,175 +1,117 @@
-// Global variables
-var timeLeft = 30;
-var elem = document.getElementById("timer");
-var timerId = setInterval(countdown, 1000);
-var $questionContent = $("<div></div>");
+var card = $("#quiz-area");
+
+// Question set
 var questions = [
-    {question: "Which rap group is not a member of the Native Tongues?",
-     choices1: [ "De La Soul", "Wu-Tang Clan", "A Tribe Called Quest", "Jungle Brothers"],
-     answer: 1
-    },
-    {question: "First Rap Album to Go Platinum?",
-     choices2: ["License to Ill", "Straight Outta Compton", "Paid In Full", "Raising Hell"],
-     answer: 3
-    },
-    {question: "Which rap group was the first rap artists to get a million dollar record deal?",
-     choices3: ["Eric B. & Rakim", "Wu-Tang Clan", "Public Enemy", "N.W.A."],
-     answer: 0
-    },
-    {question: "Who is the highest selling rap artist of all time?",
-     choices4: ["Jay-Z", "2Pac", "Eminem", "MC Hammer"],
-     answer: 2
-    },
-    {question: "Is the debut of rap artist, Nas, with the album, Illmatic, considered a classic?",
-     choices5: ["True", "False"],
-     answer: 0
-    },
-    {question: "Which album did not sell over 10 million copies?",
-     choices6: ["The Blueprint", "The Marshall Mathers LP", "All Eyez On Me", "Life After Death"],
-     answer: 0
-    },
-    {question: "Who was the first rap artist(s) to win a Grammy?",
-     choices7: ["MC Hammer", "LL Cool J", "Run DMC", "DJ Jazzy Jeff & the Fresh Prince"],
-     answer: 3
-   },
-    {question: "Jay-Z beat Nas in their rap battle",
-     choices8: ["True", "False"],
-     answer: 1
-    },
-]
-var results;
-var correctAnswers = 0;
-var incorrectAnswers = 0;
-var unanswered;
+  {
+    question: "Which rap group is not a member of the Native Tongues?",
+    answers: [ "De La Soul", "Wu-Tang Clan", "A Tribe Called Quest", "Jungle Brothers" ],
+    correctAnswer: "Wu-Tang Clan"
+  },
+  {
+    question: "Which was the first rap album to go platinum?",
+    answers: [ "License to Ill", "Straight Outta Compton", "Paid In Full", "Raising Hell" ],
+    correctAnswer: "Raising Hell"
+  },
+  {
+    question: "Which rap group was the first rap artists to get a million dollar record deal?",
+    answers: [ "Eric B. & Rakim", "Wu-Tang Clan", "Public Enemy", "N.W.A." ],
+    correctAnswer: "Eric B & Rakim"
+  },
+  {
+    question: "Who is the highest selling rap artist of all time?",
+    answers: [ "Jay-Z", "2Pac", "Eminem", "MC Hammer" ],
+    correctAnswer: "Eminem"
+  },
+  {
+    question: "Is the debut of rap artist, Nas, with the album, Illmatic, considered a classic?",
+    answers: [ "True", "False" ],
+    correctAnswer: "True"
+  },
+  {
+    question: "Which album did not sell over 10 million copies?",
+    answers: ["The Blueprint", "The Marshall Mathers LP", "All Eyez On Me", "Life After Death"],
+    correctAnswer: "The Blueprint"
+  },
+  {
+    question: "Who was the first rap artist(s) to win a Grammy?",
+    answers: [ "MC Hammer", "LL Cool J", "Run DMC", "DJ Jazzy Jeff & The Fresh Prince" ],
+    correctAnswer: "DJ Jazzy Jeff & The Fresh Prince"
+  },
+  {
+    question: "Did Jay-Z defeat Nas in their rap battle?",
+    answers: [ "True", "False" ],
+    correctAnswer: "False"
+  }
+];
 
-// Will show start button and hide quiz/results
-function startGame() {
-    $(".quiz").hide();
-    $("#results").hide();
-    $("#start").on("click", function()  {
-       console.log("click")
-        $("#start").hide().css("display", "none");
-        $(".quiz").show().css("display", "block");
-   });
-}
-startGame();
+// Variable that will hold the setInterval
+var timer;
 
-// Show results/hide quize if timer runs out
-function countdown() {
-    if (timeLeft == -1) { 
-        clearTimeout(timerId);
-        $("#results").show();
-        $(".quiz").hide();
-    } else {
-        elem.innerHTML = "Time Remaining: " + timeLeft + " seconds remaining";
-        timeLeft--;
+var game = {
+  correct: 0,
+  incorrect: 0,
+  counter: 60,
+
+  countdown: function ()  {
+    game.counter--;
+    $("#counter-number").html(game.counter);
+    if (game.counter === 0) {
+      console.log("TIME UP");
+      game.done();
     }
-}
+  },
 
-// Show results/hide quiz if submit button clicked
-function submitButton() {
-   $("#submit").on("click", function() {
-      $("#results").show();
-      $(".quiz").hide();
-   });
-}
-submitButton();
+  start: function() {
+    timer = setInterval(game.countdown, 1000);
 
-// Displaying questions
-function quiz()   {
-   for(var i = 0; i < questions.length; i++) {
-      var el = "#q" + (i + 1);
-      $(el).prepend("<div>" + questions[i].question + "</div>"); 
-   }
-}  
-quiz();
+    $("#sub-wrapper").prepend(
+      "<h2>Time Remaining: <span id='counter-number'>60</span> Seconds</h2>"
+    );
 
-// Store correct answers
-function init()   {
-   sessionStorage.setItem("a1", 1);
-   sessionStorage.setItem("a2", 3);
-   sessionStorage.setItem("a3", 0);
-   sessionStorage.setItem("a4", 2);
-   sessionStorage.setItem("a5", 0);
-   sessionStorage.setItem("a6", 0);
-   sessionStorage.setItem("a7", 3);
-   sessionStorage.setItem("a8", 1);
-}
+    $("#start").remove();
 
-// Records answers
-function process(q)  {
-   if (q == "q1") {
-      var submitted = $("input[name=q1]:checked").val();
-         if (submitted == sessionStorage.a1) {
-            correctAnswers++;
-      }  else  {
-            incorrectAnswers++;
+    for (var i = 0; i < questions.length; i++) {
+      card.append("<h2>" + questions[i].question + "</h2>");
+      for (var j = 0; j < questions[i].answers.length; j++) {
+        card.append("<input type='radio' name='question-" + i +
+          "' value='" + questions[i].answers[j] + "'style='color: #FBBC05'" + "''>" + questions[i].answers[j]);
       }
-   }
+    }
 
-   if (q == "q2") {
-      var submitted = $("input[name=q2]:checked").val();
-         if (submitted == sessionStorage.a2) {
-            correctAnswers++;
-      }  else  {
-            incorrectAnswers++;
-      }
-   }
+    card.append("<button id='done'>Done</button>");
+  },
 
-   if (q == "q3") {
-      var submitted = $("input[name=q3]:checked").val();
-         if (submitted == sessionStorage.a3) {
-            correctAnswers++;
-      }  else  {
-            incorrectAnswers++;
+  done: function() {
+    var inputs = card.children("input:checked");
+    for (var i = 0; i < inputs.length; i++) {
+      if ($(inputs[i]).val() === questions[i].correctAnswer) {
+        game.correct++;
+      } else {
+        game.incorrect++;
       }
-   }
+    }
+    this.result();
+  },
 
-   if (q == "q4") {
-      var submitted = $("input[name=q4]:checked").val();
-         if (submitted == sessionStorage.a4) {
-            correctAnswers++;
-      }  else  {
-            incorrectAnswers++;
-      }
-   }
+  result: function() {
+    clearInterval(timer);
 
-   if (q == "q5") {
-      var submitted = $("input[name=q5]:checked").val();
-         if (submitted == sessionStorage.a5) {
-            correctAnswers++;
-      }  else  {
-            incorrectAnswers++;
-      }
-   }
+    $("#sub-wrapper h2").remove();
 
-   if (q == "q6") {
-      var submitted = $("input[name=q6]:checked").val();
-         if (submitted == sessionStorage.a6) {
-            correctAnswers++;
-      }  else  {
-            incorrectAnswers++;
-      }
-   }
+    card.html("<h2>All Done!</h2>");
+    card.append("<h3>Correct Answers: " + this.correct + "</h3>");
+    card.append("<h3>Incorrect Answers: " + this.incorrect + "</h3>");
+  },
+};
 
-   if (q == "q7") {
-      var submitted = $("input[name=q7]:checked").val();
-         if (submitted == sessionStorage.a7) {
-            correctAnswers++;
-      }  else  {
-            incorrectAnswers++;
-      }
-   }
+// CLICK EVENTS
 
-   if (q == "q8") {
-      var submitted = $("input[name=q8]:checked").val();
-         if (submitted == sessionStorage.a8) {
-            correctAnswers++;
-      }  else  {
-            incorrectAnswers++;
-      }
-      $("#correct").html("<p>" + correctAnswers + "</p>")
-      $("#incorrect").html("<p>" + incorrectAnswers + "</p>")
-   }
-   return false;
-}
+$(document).on("click", "#start", function() {
+  game.start();
+});
+
+$(document).on("click", "#done", function() {
+  game.done();
+});
+
+

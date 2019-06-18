@@ -1,73 +1,97 @@
-* {
-    box-sizing: border-box;
+html,
+body {
+  height: 100%;
 }
-body    {
-    background: url("../images/Multicolor-Show-Page-Background.jpg");
+
+body {
+  text-align: center;
+  background-image: url("../images/Multicolor-Show-Page-Background.jpg");
 }
-.col-md-8  {
-    background: black;
-    height: auto;
-    border: rgb(223, 223, 114) ridge 5px;
+
+#wrapper {
+  border: 2px black solid;
+  width: 960px;
+  min-height: 80%;
+  box-sizing: border-box;
+  padding: 5% 0;
+  margin: 5% auto;
+  background-color: rgb(236, 236, 107);
 }
-#title  {
-    text-align: center;
-    padding-top: 2vh;
-    font-family: 'Shadows Into Light', cursive;
-    font-weight: 20vw;
-    color: rgb(223, 223, 114);
-    font-size: 15vh;
+
+#sub-wrapper {
+  position: relative;
+  top: 20%;
 }
-#timer {
-    font-family: 'Gloria Hallelujah', cursive;
-    text-align: center;
-    font-size: 5vh;
-    color: #4e33ec;
+
+button {
+  display: block;
+  width: 400px;
+  height: 100px;
+  margin: 10px auto 0;
+  font-size: 42px;
+  cursor: pointer;
+  background: transparent;
+  border: rgb(236, 236, 107) 1px solid;
+  color: rgb(236, 236, 107);
 }
-.quiz   {
-    display: none;
+
+p {
+  margin-bottom: 50px;
+  font-size: 6.5rem;
+  /* font-weight: bold; */
+  color: black;
+  font-family: 'Shadows Into Light', cursive;
+  
 }
-#results    {
-    display: none;
-    text-align: center;
-    font-family: 'Gloria Hallelujah', cursive;
-    font-size: 3vw;
-    color: rgb(223, 223, 114);
+
+h2 {
+  margin-bottom: 25px;
+  font-size: 35px;
+  color: black; 
+  font-family: 'Gloria Hallelujah', cursive;
 }
-#start  {
-    width: 5vw;
-    display: flex;
-    margin: 0 auto;
-    margin-top: 15vh;
-    margin-bottom: 10vh;
-    justify-content: center;
-    background: rgb(223, 223, 114);
-    height: 15vh;
-    width: 20vw;
-    font-family: 'Gloria Hallelujah', cursive;
-    font-size: 3vw;
-    border: solid rgb(36, 44, 119) 3px;
+
+h3 {
+  margin-bottom: 10px;
+  font-size: 25px;
 }
-#submit {
-    width: 25vw;
-    height: 10vh;
-    background: rgb(223, 223, 114);
-    display: flex;
-    margin: 0 auto;
-    justify-content: center;
-    font-family: 'Gloria Hallelujah', cursive;
-    font-size: 3vw;
-    border: solid rgb(36, 44, 119) 3px;
-    margin-bottom: 10vh;
-    margin-top: 10vh;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
+
+#start {
+  font-family: 'Gloria Hallelujah', cursive;
+  margin-top: 10%;
+  background: black;
+  border: 2px solid rgb(236, 236, 107);
 }
-.question  {
-    font-family: 'Gloria Hallelujah', cursive;
-    text-align: center;
-    color: rgb(238, 109, 109);
-    margin-top: 30px;
+
+#quiz-area h2 {
+  margin-top: 50px;
+  color: black; 
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+#done {
+  margin-top: 10px;
+  background: black;
+  border: 2px solid rgb(209, 209, 135);
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+input[type="radio"] {
+  margin: 0 10px 0 10px;
+}
+
+input[value=""] {
+color: yellow;
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+h3 {
+  color: black; 
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+::-ms-input {
+  color: yellow; 
+  font-family: 'Gloria Hallelujah', cursive;
 } 
-input   {
-    font-weight: 50px;
-}
+
